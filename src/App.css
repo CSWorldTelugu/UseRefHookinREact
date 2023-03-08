@@ -1,9 +1,4 @@
-.active {
+.primary {
     background-color: blue;
     color: #fff;
-}
-
-.inactive {
-    background-color: gray;
-    color: #000;
 }

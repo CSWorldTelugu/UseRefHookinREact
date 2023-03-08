@@ -1,52 +1,48 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import './App.css'
 
 function App() {
 
-    let h1ele = useRef(null);
+    let arr = new Array(10).fill(null)
 
 
-    let x = useRef(10);
+    let headings = useRef([])
 
-    const [y, setY] = useState(100);
 
-    let z = 1000;
+    function changeh1stye(e) {
+        for (let ele of headings.current) {
+            ele.classList.remove('primary')
+        }
+        e.target.classList.add('primary')
+    }
+
+
 
     return (
+
         <>
-            <h1 ref={h1ele} className="active" >This is heading tag</h1>
 
-            <button onClick={() => {
-                console.log(h1ele)
+            {
+                arr.map(
+                    (ele, i) => {
+                        return (
+                            <h1 ref={(el) => headings.current[i] = el} onClick={(eve) => {
 
-                console.dir(h1ele.current)
+                                changeh1stye(eve)
+                            }}>
+                                This is heading {i + 1}</h1>
+                        )
 
-                h1ele.current.classList.toggle('active')
-
-
-            }} > click</button>
-
-
-            <h1>x value:{x.current}</h1>
-            <h1>z value:{z}</h1>
-
-
-            <button onClick={() => {
-
-
-                x.current = x.current + 10;
-
-                console.log(x.current);
-
-                z = z + 1000
-
-                setY(y + 100)
-
-            }}  >increment</button>
-
+                    }
+                )
+            }
 
         </>
     )
+
+
+
+
 }
 
 
